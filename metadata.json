@@ -1,0 +1,6 @@
+{
+  "name": "Link Fowarder",
+  "description": "A minimalist link redirect service using Supabase backend.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
