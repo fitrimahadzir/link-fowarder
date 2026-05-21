@@ -25,6 +25,9 @@ export default function App() {
     setShortPath(path);
 
     if (!path) {
+      setTimeout(() => {
+        window.location.href = 'https://www.fitrimahadzir.my'; 
+      }, 2000);
       setLoading(false);
       return;
     }
