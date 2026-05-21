@@ -45,6 +45,7 @@ export default function App() {
         }
 
         setTargetUrl(data.url);
+        setLoading(false);
 
         // Add a small delay for aesthetic transition as per design request
         setTimeout(() => {
