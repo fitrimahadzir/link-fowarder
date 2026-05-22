@@ -37,11 +37,20 @@ export default function App() {
         const supabase = getSupabase();
         const { data, error: supabaseError } = await supabase
           .from('redirects') 
-          .select('url')
-          .eq('path', path)
-          .single();
+          .select('url, path')
+          .or(`path.eq.${path},path.eq./${path}`)
+          .maybeSingle();
 
-        if (supabaseError || !data) {
+        console.log("Supabase error:", supabaseError, "Data:", data);
+
+        if (supabaseError) {
+          console.error(supabaseError);
+          setError(`Database error: ${supabaseError.message}`);
+          setLoading(false);
+          return;
+        }
+
+        if (!data) {
           setError('The requested link could not be found or may have expired.');
           setLoading(false);
           return;
